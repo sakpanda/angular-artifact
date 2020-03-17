@@ -1,0 +1,30 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img width="40" alt="EY Logo" src="../assets/ey-logo.jpg" />
+  <span>Download Service</span>
+  <div class="spacer"></div>
+
+</div>
+
+<!-- Form starts -->
+<form [formGroup]="downloadForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row set-mar">
+      <div class="col-md-4">
+        <select class="custom-select" (change)="changeExtn($event)" formControlName="extnName">
+          <option value="">Choose your Extension</option>
+          <option *ngFor="let extn of Extn" [ngValue]="extn">{{extn}}</option>
+        </select>
+        <!-- error block -->
+        <div class="invalid-feedback" *ngIf="isSubmitted && extnName.errors?.required">
+          <sup>*</sup>Please enter your Extension
+        </div>
+      </div>
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+
+      </div>
+    </div>
+  </div>
+</form><!-- Form ends -->
+<!-- </div> -->
